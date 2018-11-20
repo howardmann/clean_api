@@ -1,7 +1,7 @@
 const UsersRoutes = module.exports = {}
 
 // Require controllers
-const UsersController = require('../../controller/UsersController')
+const UsersController = require('../../../controller/UsersController')
 const Users = UsersController()
 
 UsersRoutes.index = (req, res, next) => {

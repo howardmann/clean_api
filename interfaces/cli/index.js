@@ -1,5 +1,5 @@
 let args = require('yargs-parser')(process.argv.slice(2))
-let UsersController = require('../controller/UsersController')
+let UsersController = require('../../controller/UsersController')
 let Users = UsersController()
 
 let printHelp = function(){

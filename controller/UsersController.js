@@ -1,5 +1,5 @@
 const UserRepository = require('../repositories/UserRepository')
-const UserSerializer = require('../serializers/UserSerializer')
+const UserSerializer = require('./serializers/UserSerializer')
 
 const UsersController = () => {
   let repository = UserRepository()
