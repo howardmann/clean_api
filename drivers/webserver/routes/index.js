@@ -5,8 +5,12 @@ const router = express.Router()
 const users = require('./users')
 const home = require('./home')
 
+// static pages
 router
   .get('/', home)
+
+// users pages
+router
   .get('/users', users.index)
   .get('/users/:id', users.show)
 

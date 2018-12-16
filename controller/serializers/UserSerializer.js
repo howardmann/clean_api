@@ -9,7 +9,7 @@ const _serializeSingleUser = (user) => {
 
 
 const UserSerializer = (data) => {
-  if (!data) { throw new Error('Expect data to be not undefined or null')}
+  if (!data) { return 'Expect data to be not undefined or null'}
   if (Array.isArray(data)) {
     return data.map(_serializeSingleUser)
   }

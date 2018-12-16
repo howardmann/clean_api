@@ -7,7 +7,10 @@ const UsersController = () => {
   return {
     getUser: (userId) => {
       return repository.get(userId)
-        .then(user => serialize(user))
+        .then(user => {
+          if (user.length < 1) { return {status: 'No user found'}}
+          return serialize(user)[0]
+        })
     },
     createUser: (userEntity) => {
       return repository.create(userEntity)
@@ -23,13 +26,13 @@ const UsersController = () => {
 module.exports = UsersController
 
 // TESTING
-// let Users = UsersController()
+// let Users = UsersController() 
 
 // const util = require('util')
 
 // Users.getUser(1)
 //   .then(result => {
-//     console.log(`getUser: ${util.inspect(result)}`);
+//     console.log(`getUser: ${util.inspect(result)}`); 
 //   })
 
 // Users.createUser({firstName: 'howie', lastName: 'mann', email: 'howie@email.com'})
