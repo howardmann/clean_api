@@ -34,6 +34,12 @@ repositories            -> Data access object interfaces (similar to ORM layer w
 index.js                -> Main application entry point
 ```
 
-## Flow of Control
+## Code order
 
-TODO
+1. model/User.js - start with your model schema
+2. datbase.Usermemory.js - require model (as required), include seed files and connection to DB. Start with memory, then replace with persistent DB e.g. MongoDB, PostgresSQL
+3. repositories/UserRepositoryMemory.js - layer between DB and controller. These are specific functins that communicate with our memoryDB
+4. repositories/UserRepository.js - require UserRepositoryMemory.js and creat a UserRepository with basic the ORM commands you want to expose; e.g. get, create, find, update, delete. This will only be accessed by the controller
+5. controller/UsersController.js - require UserRepository.js. This is the controller that will be accessed by the drivers (web server or cli). It follows similar methods as the repository (e.g. create, find, get) but also includes serialization, deserialization and error handling
+6. drivers/webserver - this is where our express app lives and only communicates with the controller
+7. drivers/cli - this is where our cli driver lives and also only communicates with the controller
